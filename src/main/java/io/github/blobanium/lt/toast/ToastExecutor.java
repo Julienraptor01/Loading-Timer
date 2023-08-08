@@ -9,12 +9,14 @@ import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
+
 
 public class ToastExecutor {
     private static String easterEggTranslatable;
-    private static boolean lazydfu = FabricLoader.getInstance().isModLoaded("lazydfu");
-    private static boolean smoothboot = FabricLoader.getInstance().isModLoaded("smoothboot");
-    private static boolean dashloader = FabricLoader.getInstance().isModLoaded("dashloader");
+    private static final boolean lazydfu = FabricLoader.getInstance().isModLoaded("lazydfu");
+    private static final boolean smoothboot = FabricLoader.getInstance().isModLoaded("smoothboot");
+    private static final boolean dashloader = FabricLoader.getInstance().isModLoaded("dashloader");
     public static final Logger LOGGER = LogManager.getLogger("Loading Timer");
 
     public static void executeToast(String translatableDescription, double toastTimeValue){
@@ -50,7 +52,7 @@ public class ToastExecutor {
     private static void easterEggMineclub() {
         if(!ResourceLoadingTimer.resourcesLoaded){
             try {
-                if (MinecraftClient.getInstance().getCurrentServerEntry().address.equals("play.mineclub.com")) {
+                if (Objects.requireNonNull(MinecraftClient.getInstance().getCurrentServerEntry()).address.equals("play.mineclub.com")) {
                     easterEggTranslatable = "loading-timer.easteregg.mineclub";
                 }
             } catch (NullPointerException e) {

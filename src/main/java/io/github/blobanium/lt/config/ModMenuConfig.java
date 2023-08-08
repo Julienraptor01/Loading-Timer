@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 
 public class ModMenuConfig implements ModMenuApi {
 
-    private static ConfigScreenFactory<?> CONFIG = FabricLoader.getInstance().isModLoaded("cloth-config2")
+    private static final ConfigScreenFactory<?> CONFIG = FabricLoader.getInstance().isModLoaded("cloth-config2")
     ? new LTClothConfig()
     : parent -> null;
     

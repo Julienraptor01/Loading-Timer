@@ -1,7 +1,6 @@
 package io.github.blobanium.lt;
 
 import io.github.blobanium.lt.config.ConfigReader;
-import io.github.blobanium.lt.mixin.BootstrapMixin;
 import io.github.blobanium.lt.toast.ToastExecutor;
 import io.github.blobanium.lt.util.logging.TimeLogger;
 import io.github.blobanium.lt.util.math.MathUtil;
@@ -18,11 +17,9 @@ public class LoadingTimer implements ModInitializer {
 	public static boolean timerDone = false;
 	public static final Logger LOGGER = LogManager.getLogger("Loading Timer");
     public static boolean advanceLoopControl = true;
-	private static double finalResultToast;
 	public static boolean resourcesLoaded = false;
 	public static double rawLoadingTime;
 	public static double finalBootstrapTime;
-	private static double finalFinalResult;
 	public static boolean GameLoaded = false;
 
 	@Override
@@ -38,7 +35,7 @@ public class LoadingTimer implements ModInitializer {
     }
 
     public static void lastMessage(){
-		finalFinalResult = finalResult + finalBootstrapTime;
+		double finalFinalResult = finalResult + finalBootstrapTime;
 		TimeLogger.loggerMessage(2, finalFinalResult, "");
 		rawLoadingTime = MathUtil.roundValue(finalFinalResult - loadMemory);
 		if (rawLoadingTime < 2.3) {
@@ -46,6 +43,7 @@ public class LoadingTimer implements ModInitializer {
 		} else {
 			TimeLogger.loggerMessage(3, rawLoadingTime, "");
 		}
+		double finalResultToast;
 		if(ConfigReader.rawLoadingToast){
 			finalResultToast = MathUtil.roundValue(rawLoadingTime);
 		} else {

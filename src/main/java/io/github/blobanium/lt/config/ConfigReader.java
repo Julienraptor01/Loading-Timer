@@ -25,7 +25,7 @@ public class ConfigReader {
 
     public static void configRegister(){
     	LOGGER.debug("Registering config..");
-    	SimpleConfig CONFIG = SimpleConfig.of("LoadingTimer").provider(namespace -> ConfigReader.ltProvider(namespace)).request();
+    	SimpleConfig CONFIG = SimpleConfig.of("LoadingTimer").provider(ConfigReader::ltProvider).request();
     	final boolean insanePrecisionConfig = CONFIG.getOrDefault("insane_precision", insanePrecision); 
     	final boolean worldLoadTimeConfig = CONFIG.getOrDefault("world_loading_timer", worldLoadTime);
     	final boolean resourceLoadPercentConfig = CONFIG.getOrDefault("show_resource_load_percent", resourceLoadPercent);

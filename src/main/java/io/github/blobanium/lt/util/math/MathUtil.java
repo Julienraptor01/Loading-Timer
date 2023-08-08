@@ -11,21 +11,18 @@ public class MathUtil {
             long timeToLoad = System.nanoTime() - startingTimeMathUtil;
             long tTLDeductor = timeToLoad/tenMulti;
             double beforeFinalResult = (timeToLoad - (tTLDeductor * tenMulti));
-            double finalResultMath = tTLDeductor + (beforeFinalResult / tenMulti);
-            return finalResultMath;
+            return tTLDeductor + (beforeFinalResult / tenMulti);
         } else {
             long timeToLoad = System.currentTimeMillis() - startingTimeMathUtil;
             long tTLDeductor = timeToLoad / tenMulti;
             double beforeFinalResult = (timeToLoad - (tTLDeductor * tenMulti));
-            double finalResultMath = tTLDeductor + (beforeFinalResult / tenMulti);
-            return finalResultMath;
+            return tTLDeductor + (beforeFinalResult / tenMulti);
         }
     }
 
     public static double roundValue(double finalResult){
         double roundedVariableOutput1 = finalResult*tenMulti;
         double roundedVariableOutput2 = Math.round(roundedVariableOutput1);
-        double roundedVariableOutput3 = roundedVariableOutput2/tenMulti;
-        return roundedVariableOutput3;
+        return roundedVariableOutput2/tenMulti;
     }
 }

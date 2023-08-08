@@ -1,6 +1,5 @@
 package io.github.blobanium.lt.mixin;
 
-import io.github.blobanium.lt.LoadingTimer;
 import io.github.blobanium.lt.config.ConfigReader;
 import io.github.blobanium.lt.toast.ToastExecutor;
 import io.github.blobanium.lt.util.math.MathUtil;
@@ -9,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,7 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(WorldGenerationProgressLogger.class)
 public class WorldGenerationProgressLoggerMixin {
 
+    @Unique
     private static long worldStartingTime;
+    @Unique
     private static final Logger LOGGER = LogManager.getLogger("Loading Timer");
 
     @Inject(at = @At("HEAD"), method = "start")
