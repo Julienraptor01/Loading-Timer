@@ -19,10 +19,6 @@ repositories {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/releases"
 	}
-	maven {
-		name = "JitPack"
-		url = "https://jitpack.io"
-	}
 }
 
 dependencies {
